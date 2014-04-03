@@ -13,6 +13,9 @@
             <ul class="nav">
               <li><%= link_to 'Home', root_path %><li>
               <%= render 'layouts/navigation_links' %>
+              <% if current_user.present? %>
+              <%= current_user.name %>
+              <% end %>
             </ul>
           </nav>
         </div>

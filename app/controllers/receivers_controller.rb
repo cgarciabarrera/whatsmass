@@ -1,10 +1,12 @@
 class ReceiversController < ApplicationController
   before_action :set_receiver, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+
 
   # GET /receivers
   # GET /receivers.json
   def index
-    @receivers = Receiver.all
+    @receivers = Receiver.mine(current_user).all
   end
 
   # GET /receivers/1
@@ -25,6 +27,9 @@ class ReceiversController < ApplicationController
   # POST /receivers.json
   def create
     @receiver = Receiver.new(receiver_params)
+    @receiver.user = current_user
+    @receiver.active=true
+
 
     respond_to do |format|
       if @receiver.save
@@ -64,7 +69,14 @@ class ReceiversController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_receiver
-      @receiver = Receiver.find(params[:id])
+      #@receiver = Receiver.find(params[:id])
+
+
+      @receiver = Receiver.mine(current_user).where("id = ?", params[:id]).first
+
+      if @receiver.nil?
+        redirect_to root_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,4 +1,6 @@
 Whatsmass::Application.routes.draw do
+  resources :lists
+
   resources :receivers
 
   root :to => "home#index"

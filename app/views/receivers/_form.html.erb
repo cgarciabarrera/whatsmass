@@ -19,17 +19,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :last_sent %><br>
-    <%= f.datetime_select :last_sent %>
-  </div>
-  <div class="field">
-    <%= f.label :sex %><br>
-    <%= f.number_field :sex %>
+
+    <label for="event-state" class="accessible">Sex</label>
+        <%= f.select :sex, options_for_select(SEX_LIST)  %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,1 @@
+SEX_LIST = YAML.load_file("#{Rails.root}/config/sex.yml")["sex"]

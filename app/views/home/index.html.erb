@@ -1,1 +1,11 @@
 <h3>Home </h3>
+
+<% if current_user.present? %>
+
+
+
+    <p><%= link_to 'Mis Listas', lists_path %></p>
+
+    <p><%= link_to 'Mis receptores', receivers_path %></p>
+
+<% end %>

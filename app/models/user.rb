@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
 
 
   has_many :receivers
+  has_many :lists
 
 end
